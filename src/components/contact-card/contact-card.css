@@ -1,0 +1,38 @@
+.user-card {
+  border-radius: 0.25rem;
+  background-color: #fff;
+  padding: 15px;
+}
+
+.user-card__avatar {
+  border: inherit;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-card__avatar img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 25px;
+}
+
+.user-card__info {
+  border: inherit;
+}
+
+.user-card__action {
+  border: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.user-card .arrow-redo-circle-outline {
+  width: 2rem;
+  height: 2rem;
+}
+
+.user-card .other-icons {
+  width: 1rem;
+  height: 1rem;
+}

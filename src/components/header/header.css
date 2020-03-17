@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.navbar .search-form {
+  flex-grow: 1;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar .search-form input {
+  width: 60%;
+}
+
+.navbar input {
+  padding-left: 30px;
+}
+
+.navbar .apps-outline {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 3rem;
+}
+
+.navbar .search-outline {
+  position: relative;
+  left: 30px;
+}
+.navbar .server-outline {
+  width: 2rem;
+  height: 2rem;
+}
+
+.navbar .avatar {
+  width: 3rem;
+  height: 3rem;
+}
+
+.navbar .user-name {
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 3rem 0 1rem;
+}

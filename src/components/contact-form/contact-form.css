@@ -1,0 +1,21 @@
+.contact-form__info {
+  padding: 30px;
+  background-color: white;
+}
+
+.add-contact-header {
+  margin-bottom: 25px;
+}
+
+/* .contact-form__notes {
+  background-color: white;
+  margin-top: 15px;
+  padding: 30px;
+}
+
+.contact-form__notes svg,
+span {
+  width: 0.8rem;
+  height: 0.8rem;
+  font-size: 0.8rem;
+} */

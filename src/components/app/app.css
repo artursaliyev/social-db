@@ -1,0 +1,28 @@
+:root {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: local("Roboto Condensed"),
+    url(../../assets/fonts/RobotoCondensed-Regular.ttf) format("truetype");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Condensed", sans-serif;
+  background-color: #ebeef0;
+  padding-top: 50px;
+}
+
+svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0 5px 0 5px;
+}

@@ -1,0 +1,12 @@
+.page-not-found {
+  position: relative;
+  top: calc(50vh - 24rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  svg {
+    width: 24rem;
+    height: 24rem;
+  }
+}
