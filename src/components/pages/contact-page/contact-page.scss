@@ -1,0 +1,17 @@
+.contact-page {
+  margin-top: 40px;
+
+  &__notes {
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
+  &__other-contacts {
+    margin-top: 10px;
+    background-color: #fff;
+  }
+
+  &__relations-title {
+    padding: 10px 20px;
+  }
+}

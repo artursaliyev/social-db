@@ -1,0 +1,42 @@
+.other-contacts {
+  background-color: #fff;
+  min-height: 100px;
+  padding: 10px;
+
+  &__items {
+    display: flex;
+    overflow-x: auto;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+
+    svg {
+      width: 96px;
+      height: 96px;
+    }
+
+    img {
+      border-radius: 50px;
+      width: 96px;
+      height: 96px;
+    }
+  }
+
+  &__add-user {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

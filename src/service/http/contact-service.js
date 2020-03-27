@@ -8,6 +8,13 @@ export default class ContactService extends BaseHttpService {
     return response.data;
   };
 
+  searchContact = async (id = "", nickName = "", socialNetwork = "") => {
+    const response = await this._axios.get(
+      `/search_account?id=${id}&nick_name=${nickName}&sn_type=${socialNetwork}`
+    );
+    return response.data;
+  };
+
   getById = async id => {
     const response = await this._axios.get(`/accounts/${id}`);
     return response.data;
@@ -34,6 +41,27 @@ export default class ContactService extends BaseHttpService {
   uploadPhoto = async form => {
     try {
       const response = await this._axios.post("/accounts/image/upload", form);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  addNote = async (id, note) => {
+    try {
+      const response = await this._axios.post(`/accounts/${id}/notes`, note);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  addRelations = async (id, data) => {
+    try {
+      const response = await this._axios.post(
+        `/accounts/${id}/relations`,
+        data
+      );
       return response.data;
     } catch (error) {
       throw error;

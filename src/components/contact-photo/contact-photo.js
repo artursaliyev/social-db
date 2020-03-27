@@ -16,6 +16,14 @@ class ContactPhoto extends Component {
     this.setState({ id, image_url });
   }
 
+  componentDidUpdate(prevProps) {
+    const { id, image_url } = this.props;
+    if (prevProps.image_url !== image_url) {
+      console.log("ContactPhoto");
+      this.setState({ id, image_url });
+    }
+  }
+
   fileSelectedHandler = event => {
     this.setState({
       selectedFile: event.target.files[0]
@@ -23,9 +31,10 @@ class ContactPhoto extends Component {
   };
 
   fileUploadHandler = () => {
+    const { id } = this.props;
     const fd = new FormData();
     fd.append("file", this.state.selectedFile);
-    fd.append("id", this.state.id);
+    fd.append("id", id);
     api.contacts.uploadPhoto(fd).then(data => {
       this.setState({
         image_url: data.image_url,

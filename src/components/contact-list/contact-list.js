@@ -1,18 +1,19 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-// import compose from "../../utils/compose";
-// import { withServiceApi, withData } from "../hoc";
 import ContactCard from "../contact-card";
 import "./contact-list.css";
 
-const ContactList = ({ data }) => {
-  const renderItems = arr => {
+const ContactList = props => {
+  const { data, ...actions } = props;
+
+  const renderItems = (arr, actions) => {
     return arr.map(item => {
-      return <ContactCard key={item.id} {...item} />;
+      return <ContactCard key={item.id} {...item} {...actions} />;
     });
   };
 
-  const items = renderItems(data);
+  const items = renderItems(data, actions);
 
   return (
     <div className="user-list container">
@@ -23,18 +24,7 @@ const ContactList = ({ data }) => {
   );
 };
 
-// const mapMethodsToProps = api => {
-//   return {
-//     getData: api.contacts.all
-//   };
-// };
-
-// export default compose(
-//   withServiceApi(mapMethodsToProps),
-//   withData
-// )(ContactList);
-
-export default ContactList;
+export default withRouter(ContactList);
 
 ContactList.defaultProps = {
   data: []

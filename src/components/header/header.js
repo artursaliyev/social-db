@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./header.css";
 import { ReactComponent as SearchOutlineIcon } from "../../icons/search-outline.svg";
 import { ReactComponent as ServerOutlineIcon } from "../../icons/server-outline.svg";
-import { ReactComponent as AvatarIcon } from "../../icons/avatar.svg";
+import { ReactComponent as AddContactIcon } from "../../icons/person-add-outline.svg";
 
 const Header = ({ onChangeQuery }) => {
   const [inputValue, onChangeInput] = useState("");
@@ -15,12 +16,10 @@ const Header = ({ onChangeQuery }) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-      <div>
+      <Link to="/">
         <ServerOutlineIcon className="server-outline" />
-        <a className="navbar-brand" href="/">
-          Social-DB
-        </a>
-      </div>
+        <span>Social-DB</span>
+      </Link>
 
       <form className="search-form form-inline" onSubmit={onSubmitHandler}>
         <SearchOutlineIcon className="search-outline" />
@@ -36,7 +35,9 @@ const Header = ({ onChangeQuery }) => {
       </form>
 
       <div className="user-name">
-        <AvatarIcon className="avatar" />
+        <Link to="/add-contact">
+          <AddContactIcon className="header__add-contact" />
+        </Link>
       </div>
     </nav>
   );

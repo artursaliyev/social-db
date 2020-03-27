@@ -1,3 +1,3 @@
-import Notes from "./notes";
+import ContactNotes from "./contact-notes";
 
-export default Notes;
+export default ContactNotes;

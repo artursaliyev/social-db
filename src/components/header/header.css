@@ -34,9 +34,10 @@
   height: 2rem;
 }
 
-.navbar .avatar {
-  width: 3rem;
-  height: 3rem;
+.header__add-contact {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
 }
 
 .navbar .user-name {

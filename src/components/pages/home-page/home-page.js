@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import api from "../../../service/http";
 import Pagination from "react-js-pagination";
 
@@ -6,6 +7,7 @@ import "./home-page.css";
 import ContactList from "../../contact-list";
 import NoData from "../../no-data";
 import Spinner from "../../spinner";
+import { ReactComponent as ActionIcon } from "../../../icons/arrow-redo-circle-outline.svg";
 
 class HomePage extends Component {
   state = {
@@ -21,7 +23,11 @@ class HomePage extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     const { query } = this.props;
-    if (prevState.page !== this.state.page || prevProps.query !== query) {
+
+    if (prevProps.query !== query) {
+      this.setState({ page: 1 });
+      this.getData();
+    } else if (prevState.page !== this.state.page) {
       this.getData();
     }
   }
@@ -46,6 +52,23 @@ class HomePage extends Component {
     this.setState({ page: pageNumber });
   };
 
+  onSelectedItem = id => {
+    this.props.history.push(`/contacts/${id}`);
+  };
+
+  actionBtn = id => {
+    return (
+      <button type="button" className="btn btn-default">
+        <ActionIcon
+          className="arrow-redo-circle-outline"
+          onClick={() => {
+            this.onSelectedItem(id);
+          }}
+        />
+      </button>
+    );
+  };
+
   render() {
     const { loading, content, totalElements, count } = this.state;
 
@@ -55,7 +78,11 @@ class HomePage extends Component {
       !loading && content.length <= 0 ? (
         <NoData />
       ) : (
-        <ContactList data={content} />
+        <ContactList
+          data={content}
+          onSelectedItem={this.onSelectedItem}
+          renderActionBtn={this.actionBtn}
+        ></ContactList>
       );
 
     return (
@@ -85,4 +112,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);

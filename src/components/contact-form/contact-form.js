@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { NotificationManager } from "react-notifications";
 import api from "../../service/http";
 
 import "./contact-form.css";
@@ -25,6 +26,11 @@ class ContactForm extends Component {
       });
     });
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.data !== this.props.data) {
+      this.update(this.props.data);
+    }
+  }
 
   update = data => {
     this.setState({
@@ -40,38 +46,17 @@ class ContactForm extends Component {
       );
     });
   };
-  onChangeId = event => {
+  onChangeInput = event => {
     this.setState({
-      sn_id: event.target.value
-    });
-  };
-  onChangeNickName = event => {
-    this.setState({
-      sn_nickname: event.target.value
-    });
-  };
-  onChangeName = event => {
-    this.setState({
-      sn_name: event.target.value
-    });
-  };
-  onChangeEmail = event => {
-    this.setState({
-      sn_email: event.target.value
-    });
-  };
-  onChangePhone = event => {
-    this.setState({
-      sn_phone: event.target.value
-    });
-  };
-  onChangeSocialNetwork = event => {
-    this.setState({
-      sn_type_id: event.target.value
+      [event.target.name]: event.target.value
     });
   };
   onFinally = () => {
     this.setState({ loading: false, error: false });
+  };
+
+  onSearchContactHandler = () => {
+    this.props.onSearchContact(this.state);
   };
 
   onSubmit = event => {
@@ -121,31 +106,41 @@ class ContactForm extends Component {
               className="form-control"
               required
               id="snId"
+              name="sn_id"
               value={sn_id}
               disabled={disabled}
-              onChange={this.onChangeId}
+              onChange={this.onChangeInput}
             />
+            <small
+              id="emailHelp"
+              className="form-text text-primary contact-form__search-contact"
+              onClick={this.onSearchContactHandler}
+            >
+              Проверить
+            </small>
           </div>
           <div className="form-group col-md-6">
-            <label htmlFor="nickName">Кличка</label>
+            <label htmlFor="nickName">Nickname</label>
             <input
               type="text"
               className="form-control"
               id="nickName"
+              name="sn_nickname"
               value={sn_nickname}
-              onChange={this.onChangeNickName}
+              onChange={this.onChangeInput}
             />
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="name">ФИО</label>
+          <label htmlFor="name">ФИО/Кличка</label>
           <input
             type="text"
             className="form-control"
             id="name"
             placeholder="Полное имя"
+            name="sn_name"
             value={sn_name}
-            onChange={this.onChangeName}
+            onChange={this.onChangeInput}
           />
         </div>
         <div className="form-row">
@@ -155,8 +150,9 @@ class ContactForm extends Component {
               type="email"
               className="form-control"
               id="email"
+              name="sn_email"
               value={sn_email}
-              onChange={this.onChangeEmail}
+              onChange={this.onChangeInput}
             />
           </div>
           <div className="form-group col-md-6">
@@ -165,18 +161,20 @@ class ContactForm extends Component {
               type="tel"
               className="form-control"
               id="phone"
+              name="sn_phone"
               value={sn_phone}
-              onChange={this.onChangePhone}
+              onChange={this.onChangeInput}
             />
           </div>
         </div>
         <div className="form-row">
           <div className="form-group col-md-4">
-            <label htmlFor="inputState">State</label>
+            <label htmlFor="inputState">Сеть</label>
             <select
               className="form-control"
+              name="sn_type_id"
               value={sn_type_id}
-              onChange={this.onChangeSocialNetwork}
+              onChange={this.onChangeInput}
             >
               {this.optionElements(socialNetworks)}
             </select>
@@ -185,6 +183,9 @@ class ContactForm extends Component {
         <button type="submit" className="btn btn-primary">
           Сохранить
         </button>
+        {/* <button type="button" className="btn btn-outline-secondary m-2">
+          Очистить
+        </button> */}
       </form>
     );
   }
@@ -194,5 +195,6 @@ export default ContactForm;
 
 ContactForm.defaultProps = {
   data: null,
-  disabled: false
+  disabled: false,
+  onSearchContact: () => {}
 };

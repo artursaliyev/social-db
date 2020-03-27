@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 
 import "./app.css";
 import Header from "../header";
-import AddContactButton from "../add-contact-button";
 import PageNotFound from "../page-not-found";
 import { HomePage, AddContactPage, ContactPage } from "../pages";
 
@@ -15,7 +14,6 @@ class App extends Component {
   state = { query: "" };
 
   onChangeQuery = query => {
-    console.log(query);
     this.setState({ query });
   };
 
@@ -24,7 +22,6 @@ class App extends Component {
       <div className="app">
         <Header onChangeQuery={this.onChangeQuery} />
         <NotificationContainer />
-        <Route path="/" component={AddContactButton} exact />
         <Switch>
           <Route
             path="/"
